@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Correct import, ensure this is not grayed out
 import { IoIosArrowBack } from 'react-icons/io';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { v4 as uuid } from 'uuid';
+
+import useCreateDate from '../components/useCreateDate';
 
 
 const CreateNote = () => {
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
+  const date = useCreateDate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if(title && details) {
-      const Note = {}
+      const Note = {id: uuid(), title, details, date}
+      console.log(Note);
 
     }
 

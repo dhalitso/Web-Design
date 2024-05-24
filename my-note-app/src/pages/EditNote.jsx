@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'; // Correct import, ensure this is not g
 import { IoIosArrowBack } from 'react-icons/io';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
+
 const EditNote = () => {
   return (
     <section>
