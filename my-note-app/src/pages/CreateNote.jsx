@@ -27,8 +27,7 @@ const CreateNote = () => {
     return (
     <section>
       <header className="create-note__header">
-        <Link to="/" className="btn"> {/* Use the Link component here */}
-          <IoIosArrowBack />
+        <Link to="/" className="btn"><IoIosArrowBack />
         </Link>
         <button className="btn lg primary" onClick={handleSubmit}>Save</button>
         <button className="btn danger">
