@@ -7,7 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 const EditNote = ({ notes, setNotes }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const noteToEdit = notes.find(note => note.id === id);
+  const noteToEdit = notes.find(note => note.id == id);
 
   useEffect(() => {
     console.log('EditNote component rendered.');
@@ -20,24 +20,46 @@ const EditNote = ({ notes, setNotes }) => {
     }
   }, [notes, setNotes, noteToEdit, navigate]);
 
+  const handleForm = (e) => {
+    e.preventDefault();
+
+    if (title && details) {
+      const newNotes = notes.map(item => {
+        if(item.id == id) {
+          item =newNotes;
+        }
+        return item;
+      })
+
+      setNotes(newNotes);
+    }
+  }
   const handleSave = (e) => {
     e.preventDefault();
     console.log('Save button clicked.');
 
-    const updatedNote = { ...noteToEdit, title, details };
-    const updatedNotes = notes.map(note => note.id === id ? updatedNote : note);
+    const updatedNote = { 
+        ...noteToEdit, 
+        title, 
+        details, 
+        lastUpdated: new Date().toISOString() // Add this line to update the timestamp
+    };
+
+    const updatedNotes = notes.map(note => note.id == id ? updatedNote : note);
     setNotes(updatedNotes);
     navigate('/');
-  };
+};
 
   const handleDelete = () => {
+    if(window.confirm('Are You Sure You Want To Delete? '))
     console.log('Delete button clicked.');
 
     const updatedNotes = notes.filter(note => note.id !== id);
     setNotes(updatedNotes);
-    navigate('/');
-  };
+    navigate('/')
+  }
 
+  
   const [title, setTitle] = useState(noteToEdit ? noteToEdit.title : '');
   const [details, setDetails] = useState(noteToEdit ? noteToEdit.details : '');
 

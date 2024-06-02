@@ -3,7 +3,6 @@ import Notes from "./pages/Notes";
 import Editnote from "./pages/EditNote";
 import CreateNote from "./pages/CreateNote";
 import { useEffect, useState } from "react";
-import { dummyNotes } from "./dummy_notes";
 
 export const App = () => {
   const [notes, setNotes] = useState(JSON.parse(localStorage.getItem('notes')) || []);
