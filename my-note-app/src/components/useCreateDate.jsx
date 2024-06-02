@@ -1,6 +1,6 @@
 const useCreateDate = () => {
     const dateObj = new Date();
-    const  month = dateObj.getMonth();
+    const month = dateObj.getMonth();
     let monthName;
     switch(month) {
         case 0: monthName = "Jan";
@@ -25,15 +25,20 @@ const useCreateDate = () => {
         break;
         case 10: monthName = "Nov";
         break;
-        case 0: monthName = "Dec";
+        case 11: monthName = "Dec";
         break;
+        default: monthName = "Unknown";
     }
 
+    const minutes = dateObj.getMinutes();
+    // eslint-disable-next-line
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    
+    const date = `${monthName} ${ dateObj.getDate()}, ${dateObj.getFullYear()} [${dateObj.getHours()}:${dateObj.getMinutes()}]`;
 
-    const date = '${monthName} ${dateObj.getDate()}, ${dateObj.getFullYear()} [${dateObj.getHours()}:${dateObj.getMinutes()}]';
     return date;
 
+    
+} 
 
-}
-
-export default useCreateDate
+export default useCreateDate;

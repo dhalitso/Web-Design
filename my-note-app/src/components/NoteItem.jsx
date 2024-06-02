@@ -1,13 +1,15 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Link } from 'react-router-dom'
-
-const NoteItem = ({note}) => {
+const Noteitem = ({ note }) => {
+  
   return (
-    <Link to={'/edit-note/${note.id}'} className='note'>
-        <h4>{note.title.length > 30 ? (note.title.substr(0, 30)) + '...' : note.title}</h4>
-        <p>{note.date}</p>
+    <Link to={`/edit-note/${note.id}`}  className="note">
+         <h4>{note.title.length > 50 ? note.title.slice (0, 50) + '...' : note.title}</h4>
+         <p>{note.date}</p> {/* Ensure date is used here */}
+
     </Link>
   )
 }
 
-export default NoteItem
+export default Noteitem;
